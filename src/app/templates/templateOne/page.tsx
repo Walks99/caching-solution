@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import TemplateOne from './TemplateOne';
 
-import { FetchData } from '../../API/FetchData';
+import { FetchData } from '../../api/FetchData';
 
 interface Dog {
     id: number;

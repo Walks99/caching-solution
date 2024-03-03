@@ -1,11 +1,7 @@
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
-
-
-import { FetchData } from '../../API/FetchData';
 
 interface Dog {
     id: number;
@@ -23,30 +19,33 @@ interface Dog {
 
 export default function MyComponent() {
 
-
   const [dogData, setDogData] = useState<any>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const callFetchDataFunction = async () => {
       try {
-        const data = await FetchData();
+        const response = await fetch('/api/dogdata');
+        const data = await response.json();
+        console.log(data);
         setDogData(data.data);
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error fetching dogs:', error);
+        setError(error);
       }
     };
     callFetchDataFunction();
   }, []);
 
-  // console.log(dogData[0].attributes.Photo.data.attributes.url);
-  // const image = dogData[0].attributes.Photo.data.attributes.url;
+    console.log(`This was logged from the client component: ${dogData}`);
 
-  return (
-    <div className={styles.mainContainer}>
-      {dogData && dogData.map((dog: Dog) => (
-        <img src={`http://localhost:1337${dog.attributes.Photo.data.attributes.url}`} key={dog.id}/>
-      ))}
-    </div>
-
-  );
-}
+    return (
+      <div className={styles.mainContainer}>
+        {dogData && dogData.map((dog: Dog) => (
+          <img src={`http://localhost:1337${dog.attributes.Photo.data.attributes.url}`} key={dog.id}/>
+        ))}
+        {/* {dogData ? null : JSON.stringify(dogData)} */}
+        {error ? <div style={{fontSize: "60px"}}>Error: Unauthorised</div> : null}
+      </div>
+    );
+  }

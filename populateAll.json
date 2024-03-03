@@ -1,0 +1,7 @@
+{
+    "error": {
+      "message": "Invalid request data",
+      "code": "BAD_REQUEST"
+    }
+  }
+  

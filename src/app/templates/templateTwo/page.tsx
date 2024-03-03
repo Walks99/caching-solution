@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import TemplateOne from './TemplateTwo';
 
-import { FetchData } from '../../API/FetchData';
+import { FetchData } from '../../api/FetchData';
 
 interface Dog {
     id: number;
