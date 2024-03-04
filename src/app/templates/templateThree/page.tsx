@@ -5,16 +5,8 @@ import styles from './page.module.scss';
 
 interface Dog {
     id: number;
-    attributes: {
-      Breed: string;
-      Photo: {
-        data: {
-          attributes: {
-            url: string;
-          };
-        };
-      };
-    };
+    name: string;
+    age: number;
   }
 
 export default function MyComponent() {
@@ -22,7 +14,7 @@ export default function MyComponent() {
   const [dogData, setDogData] = useState<any>([]);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  
     const callFetchDataFunction = async () => {
       try {
         const response = await fetch('/api/dogdata');
@@ -35,17 +27,23 @@ export default function MyComponent() {
       }
     };
     callFetchDataFunction();
-  }, []);
+    setInterval(callFetchDataFunction, 3000); // Fetch data every 3 seconds
+  
 
     console.log(`This was logged from the client component: ${dogData}`);
 
     return (
       <div className={styles.mainContainer}>
-        {dogData && dogData.map((dog: Dog) => (
-          <img src={`http://localhost:1337${dog.attributes.Photo.data.attributes.url}`} key={dog.id}/>
-        ))}
-        {/* {dogData ? null : JSON.stringify(dogData)} */}
-        {error ? <div style={{fontSize: "60px"}}>Error: Unauthorised</div> : null}
+        <h1>Template Three</h1>
+        <p>This is a template with a client component that receives data from a server component and stores that data in IndexedDB.</p>
+        <div>
+          {dogData.map((dog: Dog) => (
+            <div key={dog.id}>
+              <h2>{dog.name}</h2>
+              <p>Age: {dog.age}</p>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
