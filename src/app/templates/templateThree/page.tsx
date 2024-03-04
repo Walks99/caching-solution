@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.scss';
+import { insertDogData } from '../../../services/indexedDB';
 
 interface Dog {
     id: number;
@@ -22,6 +23,7 @@ export default function MyComponent() {
       }
       const data: Dog[] = await response.json();
       setDogData(data);
+      insertDogData(data);
     } catch (error: any) {
       console.error('Error fetching dogs:', error);
       setError(error.message);
@@ -30,7 +32,7 @@ export default function MyComponent() {
 
  useEffect(() => {
     fetchDogData();
-    const intervalId = setInterval(fetchDogData, 5000); // Fetch data every 5 seconds
+    const intervalId = setInterval(fetchDogData, 10000); // Fetch data every 5 seconds
     return () => clearInterval(intervalId); // Clean up interval on component unmount
  }, []);
 
