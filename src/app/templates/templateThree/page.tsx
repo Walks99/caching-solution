@@ -30,7 +30,7 @@ export default function MyComponent() {
 
  useEffect(() => {
     fetchDogData();
-    const intervalId = setInterval(fetchDogData, 20000); // Fetch data every 6 seconds
+    const intervalId = setInterval(fetchDogData, 5000); // Fetch data every 5 seconds
     return () => clearInterval(intervalId); // Clean up interval on component unmount
  }, []);
 
