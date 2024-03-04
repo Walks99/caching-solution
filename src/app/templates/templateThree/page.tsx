@@ -39,7 +39,7 @@ export default function MyComponent() {
       <div>
         {dogData.map((dog) => (
           <div key={dog.id}>
-            <h2>{dog.name}</h2>
+            <h2>Name: {dog.name}</h2>
             <p>Age: {dog.age}</p>
           </div>
         ))}
