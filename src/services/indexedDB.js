@@ -63,7 +63,8 @@ to ensure that the data in the store is always up to date. */
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^END of insertDogData function
 // ################################################################
 //  ------------------------------START of getDogDataFromIndexedDB function
-/* The getDogDataFromIndexedDB function is called from the client component src>app>templates>templateThree>page.tsx and returns a promise that resolves
+/* The getDogDataFromIndexedDB function is called from the client component
+ src>app>templates>templateThree>page.tsx and returns a promise that resolves
 with the dog data from IndexedDB. It is triggered on on the initial mount of
 the client component and again every ten seconds thereafter. There is logic 
 within the client component that ensures the getDogDataFromIndexedDB function 
