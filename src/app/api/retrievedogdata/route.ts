@@ -1,3 +1,6 @@
+/* This endpoint is called by the client component src>app>templates>templateThree>page.tsx. 
+It reads the contents of the dogs.json file and returns them as a JSON response to the client.
+ */
 "use server"
 
 import { NextRequest, NextResponse } from "next/server";
