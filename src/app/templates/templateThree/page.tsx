@@ -10,6 +10,7 @@ interface Dog {
     id: number;
     name: string;
     age: number;
+    imgURL: string;
 }
 
 // Define the component that will be rendered by the client.
@@ -65,15 +66,16 @@ the 'getDogDataFromIndexedDB' function to retrieve dog data from IndexedDB.
 
 //  The component dynamically renders the dog data received from the server.
  return (
-    <div className={styles.mainContainer}>
-      <div>
-        {dogData.map((dog) => (
-          <div key={dog.id}>
-            <h2>Name: {dog.name}</h2>
-            <p>Age: {dog.age}</p>
-          </div>
-        ))}
+  <div className={styles.mainContainer}>
+    <div>
+    {dogData.map((dog) => (
+      <div key={dog.id}>
+      <h2>Name: {dog.name}</h2>
+      <p>Age: {dog.age}</p>
+      <img src={dog.imgURL} alt={`Image of ${dog.name}`} />
       </div>
+    ))}
     </div>
+  </div>
  );
 }
